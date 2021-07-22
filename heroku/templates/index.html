@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+   <title>Image to XLS converter</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <style>
+      * {
+         font-size: 16px;
+         font-family: Arial;
+      }
+
+      h1 {
+         font-size: 36px;
+      }
+
+      i {
+         font-style: italic;
+         color: #1bd692;
+      }
+
+      .slidecontainer {
+         width: 90%;
+      }
+
+      .slider {
+         -webkit-appearance: none;
+         width: 100%;
+         height: 25px;
+         background: #d3d3d3;
+         border-radius: 5px;
+         outline: none;
+         opacity: 0.7;
+         -webkit-transition: .2s;
+         transition: opacity .2s;
+      }
+
+      .slider:hover {
+         opacity: 1;
+      }
+
+      .slider::-webkit-slider-thumb {
+         -webkit-appearance: none;
+         appearance: none;
+         width: 25px;
+         height: 25px;
+         border-radius: 5px;
+         background: #1bd692;
+         cursor: pointer;
+      }
+
+      .slider::-moz-range-thumb {
+         width: 25px;
+         height: 25px;
+         border-radius: 5px;
+         background: #1bd692;
+         cursor: pointer;
+      }
+
+      .form-submit-button {
+         padding: 5px 15px;
+         color: #FFFFFF;
+         background: #04AA6D;
+         border-radius: 5px;
+         border: 0 none;
+         cursor: pointer;
+         -webkit-border-radius: 5px;
+         border-radius: 5px;
+         font-weight: bold;
+      }
+
+      .form-submit-button:hover {
+         padding: 5px 15px;
+         color: #FFFFFF;
+         background: rgb(0, 88, 56);
+         border-radius: 5px;
+         border: 0 none;
+         cursor: pointer;
+         -webkit-border-radius: 5px;
+         border-radius: 5px;
+         font-weight: bold;
+      }
+
+      input[type="file"] {
+         display: none;
+      }
+
+      .custom-file-upload {
+         border: 1px solid #04AA6D;
+         border-radius: 5px;
+         display: inline-block;
+         padding: 6px 12px;
+         cursor: pointer;
+      }
+
+      footer {
+         position: absolute;
+         text-align: center;
+         bottom: 10px;
+         right: 20px;
+      }
+      a {
+         text-decoration: none;
+         color: #d3d3d3;
+      }
+   </style>
+</head>
+
+<body>
+   <div align="center">
+      <h1>Image to XLS converter</h1>
+      <form method="POST" enctype="multipart/form-data">
+         <label for="file-upload" class="custom-file-upload">
+            <i class="fa fa-cloud-upload"></i> Choose an image file to be converted
+         </label>
+         <input id="file-upload" type="file" name="file" />
+         <br><br>
+         <div class="slidecontainer">
+            Width: <span id="widthValue"></span>
+            <input type="range" min="2" max="512" value="50" class="slider" id="widthRange" name="width">
+         </div>
+         <script>
+            var sliderWidth = document.getElementById("widthRange");
+            var outputWidth = document.getElementById("widthValue");
+            outputWidth.innerHTML = sliderWidth.value;
+            sliderWidth.oninput = function () {
+               outputWidth.innerHTML = this.value;
+            }
+         </script>
+         <br>
+
+         <div class="slidecontainer">
+            Colors: <span id="colorsValue"></span>
+            <input type="range" min="2" max="256" value="16" class="slider" id="colorsRange" name="colors">
+         </div>
+         <script>
+            var sliderColors = document.getElementById("colorsRange");
+            var outputColors = document.getElementById("colorsValue");
+            outputColors.innerHTML = sliderColors.value;
+            sliderColors.oninput = function () {
+               outputColors.innerHTML = this.value;
+            }
+         </script>
+         <p><input type="submit" class="form-submit-button" form-submit-button value="Put a spell"></p>
+      </form>
+      <footer><a href='https://www.instagram.com/qumyz.apps/'>@qumyz.apps</a></footer>
+</body>
+
+</html>
